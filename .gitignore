@@ -1,8 +1,8 @@
 # Ignore generated directories
-/bin/
-/config/
-/out/
-/lib/buildout/**
+/REST/bin/
+/REST/config/
+/REST/out/
+/REST/lib/buildout/**
 
 # Ignore generated files
 *.pyc
