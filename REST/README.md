@@ -1,7 +1,7 @@
 DO-IT-REST
 ==========
 
-REST APIs 
+REST APIs  [ Please check your folder location should be cd path/to/your/workspace/DO-IT-Seed/REST]
 
 Run Following commands [ One time ]
 
