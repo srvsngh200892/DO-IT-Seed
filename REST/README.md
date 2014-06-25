@@ -9,5 +9,6 @@ Run Following commands [ One time ]
 2. bin/buildout
 
 
-To run server
+To run server, run following command.
+
 **bin/django runserver**
