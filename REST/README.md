@@ -1,4 +1,13 @@
-DO-IT-Seed
+DO-IT-REST
 ==========
 
-It contains the angular seed which also has DO IT APIs which is required for this tasks 
+REST APIs 
+
+Run Following commands [ One time ]
+
+1. python bootstrap.py
+2. bin/buildout
+
+
+To run server
+**bin/django runserver**
