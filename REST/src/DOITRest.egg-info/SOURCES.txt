@@ -1,0 +1,14 @@
+setup.py
+src/DOITRest/__init__.py
+src/DOITRest/api.py
+src/DOITRest/dev_settings.py
+src/DOITRest/models.py
+src/DOITRest/settings.py
+src/DOITRest/test_settings.py
+src/DOITRest/urls.py
+src/DOITRest/wsgi.py
+src/DOITRest.egg-info/PKG-INFO
+src/DOITRest.egg-info/SOURCES.txt
+src/DOITRest.egg-info/dependency_links.txt
+src/DOITRest.egg-info/requires.txt
+src/DOITRest.egg-info/top_level.txt
