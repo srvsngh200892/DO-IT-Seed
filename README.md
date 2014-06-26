@@ -4,7 +4,7 @@ DO-IT-Seed
 It contains the angular seed which also has DO IT APIs which is required for this tasks.  
 
 
-# Project Setup
+###Project Setup
 
 1. cd to ```REST```
 
@@ -24,5 +24,5 @@ It contains the angular seed which also has DO IT APIs which is required for thi
 5. cd WEBAPP
 6. cd app
 7. To host your web app run -
-    ** python -m SimpleHTTPServer 9081 **
+    **python -m SimpleHTTPServer 9081**
     This will host your App locally, you can check by accessing ```localhost:9081```
