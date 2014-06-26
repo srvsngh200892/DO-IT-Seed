@@ -4,7 +4,7 @@ DO-IT-Seed
 It contains the angular seed which also has DO IT APIs which is required for this tasks.  
 
  * Click on Fork button to fork it.
- * Clone forked repo to your system. ```git clone https:\\github.com\[your-user-name]\DO-IT-Seed.git DO-IT
+ * Clone forked repo to your system. ```git clone https:\\github.com\[your-user-name]\DO-IT-Seed.git DO-IT```
  * Follow Project Setup steps.
 
 ###Project Setup
