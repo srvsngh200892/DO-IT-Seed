@@ -32,7 +32,7 @@ It contains the angular seed which also has DO IT APIs which is required for thi
 
 
 ###IDE SetUp
-1. Open your eclipse and import ```DOIT``` as existing project.
+1. Open your eclipse and import ```DOIT``` as existing project.  
 **Note**:  
 DOIT is an eclipse project configured to angular nature. This will help you in content assistent, autocompletion, syntax highlighting for angular specific elements.  
 ```Quick tip - For auto-suggestion type prefix and press ctrl + space```.  
