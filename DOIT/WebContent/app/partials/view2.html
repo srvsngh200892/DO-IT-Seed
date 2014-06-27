@@ -2,9 +2,9 @@
 <div class="container borders">
 <div class="row">
 <div class="col-md-12 col-sm-12  ">
-<button class="btn btn-default shift" ng-click="myFilter = {type: 1}">Showstopper</button>
-    <button class="btn btn-default " ng-click="myFilter = {type: 2}">High</button>
-    <button class="btn btn-default " ng-click="myFilter = {type: 3}">Medium</button></div></div>
+<button class="btn btn-default shift" ng-click="myFilter = {priority: 'Showstopper'}">Showstopper</button>
+    <button class="btn btn-default " ng-click="myFilter = {priority: 'High'}">High</button>
+    <button class="btn btn-default " ng-click="myFilter = {priority: 'Medium'}">Medium</button></div></div>
   <div class="row">
   
     <div class="col-md-12 ">
@@ -40,7 +40,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr  ng-repeat="coordinator in projectdetails.status_task">
+          <tr  ng-repeat="coordinator in projectdetails.status_task | filter:myFilter">
 					
 					
 					<td>{{coordinator.status}}<br><br></td>
@@ -61,7 +61,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr  ng-repeat="coordinator in projectdetails.status_task">
+          <tr  ng-repeat="coordinator in projectdetails.status_task |  filter:myFilter">
 					
 					
 					<td>{{coordinator.des}}<br><br></td>
@@ -80,7 +80,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr  ng-repeat="coordinator in projectdetails.status_task">
+          <tr  ng-repeat="coordinator in projectdetails.status_task |filter:myFilter">
 					
 					
 					<td>Created Date:{{coordinator.created_date}}<br><br>Due Date:{{coordinator.due_date}}<br><br>Assign To:{{coordinator.assign_to}}</td>

@@ -41,8 +41,8 @@ angular.module('myApp.controllers', [])
     $scope.projectlist1 = [
                           {
                               "id": 1,
-                              "status_task":[{"status":"pending","assign_to":"saurav","des":"sdsadcadsdsadsa","due_date":"20/5/2014",
-                                  "created_date":"20/5/2014"},{"status":"complete","des":"vdjajdsajhsjssajcvshacvcbsajbcascbdsa","due_date":"20/5/2014",
+                              "status_task":[{"status":"pending","priority": "Showstopper","assign_to":"saurav","des":"sdsadcadsdsadsa","due_date":"20/5/2014",
+                                  "created_date":"20/5/2014"},{"status":"complete","priority": "High","des":"vdjajdsajhsjssajcvshacvcbsajbcascbdsa","due_date":"20/5/2014",
                                       "created_date":"20/5/2014","assign_to":"saurav"}],
                              
                               "coordinators":[{"name":"priyanka","role":"dev"},{"name":"saurav","role":"dev"}],
@@ -53,7 +53,7 @@ angular.module('myApp.controllers', [])
                               
                               "id": 2,
                               "status_task":[{"status":"complete", "due_date":"20/5/2014",
-                                  "created_date":"20/5/2014","des":"sdsadsadcnskcnsakcnsakcsaakc","assign_to":"saurav"},{"status":"pending","des":"streteFBskncsakacnSJXSXdsadsa", "due_date":"20/5/2014",
+                                  "created_date":"20/5/2014","priority": "Showstopper","des":"sdsadsadcnskcnsakcnsakcsaakc","assign_to":"saurav"},{"status":"pending","priority": "Medium","des":"streteFBskncsakacnSJXSXdsadsa", "due_date":"20/5/2014",
                                       "created_date":"20/5/2014","assign_to":"kosick"}],
                              "coordinators":[{"name":"kousick","role":"dev"},{"name":"saurav","role":"dev"}] ,
                             
@@ -62,18 +62,18 @@ angular.module('myApp.controllers', [])
                           {
                               
                               "id": 3,
-                              "status_task":[{"status":"pending","assign_to":"priyanka","des":"sdsadsadckncksncskansaakcnsaaksdsadsa","due_date":"20/5/2014",
+                              "status_task":[{"status":"pending","priority": "Medium","assign_to":"priyanka","des":"sdsadsadckncksncskansaakcnsaaksdsadsa","due_date":"20/5/2014",
                                   "created_date":"20/5/2014"},{"status":"pending","des":"vcsjbxsajbxjsabxjsxbxsjxsjxbsjbxsdsadsa","due_date":"20/5/2014",
-                                      "created_date":"20/5/2014","assign_to":"kosick"}],
+                                      "created_date":"20/5/2014","assign_to":"kosick","priority": "High"}],
                            	"coordinators":[{"name":"kousick","role":"dev"},{"name":"priyanka","role":"dev"}],
                            	
                           },
                           {
                               
                               "id": 4,
-                              "status_task":[{"status":"pending","des":"sdsadncskcnskcsakcnascksacnsaksadsdsadsa","due_date":"20/5/2014",
+                              "status_task":[{"status":"pending","priority": "Showstopper","des":"sdsadncskcnskcsakcnascksacnsaksadsdsadsa","due_date":"20/5/2014",
                                   "created_date":"20/5/2014","assign_to":"priyanka"},{"status":"pending","des":"sajcbsajcbsajcbsajsajcbsaajcbsawesadsa","due_date":"20/5/2014",
-                                      "created_date":"20/5/2014","assign_to":"kosick"}],
+                                      "created_date":"20/5/2014","assign_to":"kosick","priority": "Medium"}],
                            	"coordinators":[{"name":"kousick","role":"dev"},{"name":"priyanka","role":"dev"},{"name":"saurav","role":"dev"}],
                            	"due_date":"20/5/2014",
                             
