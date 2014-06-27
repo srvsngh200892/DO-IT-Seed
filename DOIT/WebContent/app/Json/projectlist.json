@@ -1,0 +1,24 @@
+{
+    "project": [
+        {
+            "id": 1,
+            "description": "Productidentifier",
+            "name": "Assignment"
+        },
+        {
+            "description": "Nameoftheproduct",
+            "id": 1,
+            "name": "Assignment1"
+        },
+        {
+            "description": "Nameoftheproduct",
+            "id": 3,
+            "name": "Assignment2"
+        },
+        {
+            "description": "Nameoftheproduct",
+            "id": 4,
+            "name": "Assignment3"
+        }
+    ]
+}

@@ -1,3 +1,91 @@
-<div class="jumbotron">
-  <p ng-bind="message"></p>
+
+<div class="container borders">
+  <div class="row">
+    <div class="col-md-12 ">
+    
+    <div class="col-md-2 ">
+      <table >
+        <thead>
+          <tr>
+            <th>Collaborators</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="coordinator in projectdetails.coordinators">
+					
+					
+					<td>{{coordinator .name}}<br>{{coordinator .role}}</td>
+					
+				</tr>
+        </tbody>
+      </table>
+ 
+    </div>
+    
+    <div class="col-md-2 ">
+     
+      
+      <table >
+        <thead>
+          <tr>
+            <th>Status</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ng-repeat="coordinator in projectdetails.status_task">
+					
+					
+					<td>{{coordinator.status}}<br><br></td>
+					
+				</tr>
+        </tbody>
+      </table>
+ 
+    </div>
+    
+    <div class="col-md-4">
+      
+<table >
+        <thead>
+          <tr>
+            <th>Task Details</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ng-repeat="coordinator in projectdetails.status_task">
+					
+					
+					<td>{{coordinator.des}}<br><br></td>
+					
+				</tr>
+        </tbody>
+      </table>
+ 
+    </div>
+    <div class="col-md-4"></div>
+      <table >
+        <thead>
+          <tr>
+            <th>Deadline</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ng-repeat="coordinator in projectdetails.status_task">
+					
+					
+					<td>Created Date:{{coordinator.created_date}}<br><br>Due Date:{{coordinator.due_date}}<br><br>Assign To:{{coordinator.assign_to}}</td>
+					
+				</tr>
+        </tbody>
+      </table>
+ 
+ 
+    </div>
+    
+     
+  </div>
 </div>
