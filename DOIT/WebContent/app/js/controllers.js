@@ -12,19 +12,19 @@ angular.module('myApp.controllers', [])
                                "coordinators":['saurav','priyanka']
                            },
                            {
-                               "description": "Nameoftheproduct",
+                               "description": "Nameofthepject",
                                "id": 2,
                                "name": "Assignment1",
                               "coordinators":['saurav','kousick']   
                            },
                            {
-                               "description": "Nameoftheproduct",
+                               "description": "NameoftheHu",
                                "id": 3,
                                "name": "Assignment2",
                             	"coordinators":["kousick","priyanka"]
                            },
                            {
-                               "description": "Nameoftheproduct",
+                               "description": "NameoftheAssng",
                                "id": 4,
                                "name": "Assignment3",
                             	"coordinators":['saurav','priyanka','kousick',]
@@ -41,40 +41,40 @@ angular.module('myApp.controllers', [])
     $scope.projectlist1 = [
                           {
                               "id": 1,
-                              "status_task":[{"status":"pending","priority": "Showstopper","assign_to":"saurav","des":"sdsadcadsdsadsa","due_date":"20/5/2014",
-                                  "created_date":"20/5/2014"},{"status":"complete","priority": "High","des":"vdjajdsajhsjssajcvshacvcbsajbcascbdsa","due_date":"20/5/2014",
+                              "status_task":[{"description": "Productidentifier","status":"/img/complete.png","priority": "Showstopper","assign_to":"saurav","des":"sdsadcadsdsadsa","due_date":"20/5/2014",
+                                  "created_date":"20/5/2014"},{"description": "Productidentifier","status":"/img/pending.jpg","priority": "High","des":"vdjajdsajhsjssajcvshacvcbsajbcascbdsa","due_date":"20/5/2014",
                                       "created_date":"20/5/2014","assign_to":"saurav"}],
                              
-                              "coordinators":[{"name":"priyanka","role":"dev"},{"name":"saurav","role":"dev"}],
+                              "coordinators":[{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"},{"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}],
                              
                                
                           },
                           {
                               
                               "id": 2,
-                              "status_task":[{"status":"complete", "due_date":"20/5/2014",
-                                  "created_date":"20/5/2014","priority": "Showstopper","des":"sdsadsadcnskcnsakcnsakcsaakc","assign_to":"saurav"},{"status":"pending","priority": "Medium","des":"streteFBskncsakacnSJXSXdsadsa", "due_date":"20/5/2014",
-                                      "created_date":"20/5/2014","assign_to":"kosick"}],
-                             "coordinators":[{"name":"kousick","role":"dev"},{"name":"saurav","role":"dev"}] ,
+                              "status_task":[{"description": "Nameoftheprject","status":"/img/pending.jpg", "due_date":"20/5/2014",
+                                  "created_date":"20/5/2014","priority": "Showstopper","des":"sdsadsadcnskcnsakcnsakcsaakc","assign_to":"saurav"},{"status":"/img/complete.png","priority": "Medium","des":"streteFBskncsakacnSJXSXdsadsa", "due_date":"20/5/2014",
+                                      "created_date":"20/5/2014","description": "Nameofthepject","assign_to":"kosick"}],
+                             "coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},{"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}] ,
                             
                              
                           },
                           {
                               
                               "id": 3,
-                              "status_task":[{"status":"pending","priority": "Medium","assign_to":"priyanka","des":"sdsadsadckncksncskansaakcnsaaksdsadsa","due_date":"20/5/2014",
-                                  "created_date":"20/5/2014"},{"status":"pending","des":"vcsjbxsajbxjsabxjsxbxsjxsjxbsjbxsdsadsa","due_date":"20/5/2014",
+                              "status_task":[{"description": "NameoftheHU","status":"/img/complete.png","priority": "Medium","assign_to":"priyanka","des":"sdsadsadckncksncskansaakcnsaaksdsadsa","due_date":"20/5/2014",
+                                  "created_date":"20/5/2014"},{"description": "NameoftheHU","status":"/img/pending.jpg","des":"vcsjbxsajbxjsabxjsxbxsjxsjxbsjbxsdsadsa","due_date":"20/5/2014",
                                       "created_date":"20/5/2014","assign_to":"kosick","priority": "High"}],
-                           	"coordinators":[{"name":"kousick","role":"dev"},{"name":"priyanka","role":"dev"}],
+                           	"coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"}],
                            	
                           },
                           {
                               
                               "id": 4,
-                              "status_task":[{"status":"pending","priority": "Showstopper","des":"sdsadncskcnskcsakcnascksacnsaksadsdsadsa","due_date":"20/5/2014",
-                                  "created_date":"20/5/2014","assign_to":"priyanka"},{"status":"pending","des":"sajcbsajcbsajcbsajsajcbsaajcbsawesadsa","due_date":"20/5/2014",
+                              "status_task":[{"description": "NameoftheAssng","status":"/img/pending.jpg","priority": "Showstopper","des":"sdsadncskcnskcsakcnascksacnsaksadsdsadsa","due_date":"20/5/2014",
+                                  "created_date":"20/5/2014","assign_to":"priyanka"},{"description": "NameofAssn","status":"/img/pending.jpg","des":"sajcbsajcbsajcbsajsajcbsaajcbsawesadsa","due_date":"20/5/2014",
                                       "created_date":"20/5/2014","assign_to":"kosick","priority": "Medium"}],
-                           	"coordinators":[{"name":"kousick","role":"dev"},{"name":"priyanka","role":"dev"},{"name":"saurav","role":"dev"}],
+                           	"coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"},{"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}],
                            	"due_date":"20/5/2014",
                             
                           
