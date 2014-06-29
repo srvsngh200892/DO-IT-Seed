@@ -3,81 +3,75 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('ProjectDetails', ['$scope','$modal', '$log', function($scope, $modal, $log) {
-     $scope.projectlist = [
-                           {
-                               "id": 1,
-                               "description": "Productidentifier",
-                               "name": "Assignment",
-                               "coordinators":['saurav','priyanka']
-                           },
-                           {
-                               "description": "Nameofthepject",
-                               "id": 2,
-                               "name": "Assignment1",
-                              "coordinators":['saurav','kousick']   
-                           },
-                           {
-                               "description": "NameoftheHu",
-                               "id": 3,
-                               "name": "Assignment2",
-                            	"coordinators":["kousick","priyanka"]
-                           },
-                           {
-                               "description": "NameoftheAssng",
-                               "id": 4,
-                               "name": "Assignment3",
-                            	"coordinators":['saurav','priyanka','kousick',]
-                           }
-                       ];
+  .controller('ProjectDetails', ['$scope','$modal', '$log', function($scope,$modal, $log) {
+     $scope.projectlist = [ {
+         "id": 1,
+         "description": "Productidentifier",
+         "name": "Assignment",
+         "coordinators":['saurav','priyanka']
+     },
+     {
+         "description": "Nameofthepject",
+         "id": 2,
+         "name": "Assignment1",
+        "coordinators":['saurav','kousick']   
+     },
+     {
+         "description": "NameoftheHu",
+         "id": 3,
+         "name": "Assignment2",
+      	"coordinators":["kousick","priyanka"]
+     },
+     {
+         "description": "NameoftheAssng",
+         "id": 4,
+         "name": "Assignment3",
+      	"coordinators":['saurav','priyanka','kousick',]
+     }];
      
-    
+  
 
-    	    $scope.open = function () {
+                    $scope.open = function (size) {
 
-    	        $modal.open({
-    	            templateUrl: 'myModalContent.html',
-    	            backdrop: true,
-    	            windowClass: 'modal',
-    	            controller: function ($scope, $modalInstance, $log, projectlist) {
-    	                $scope.projectlist = projectlist;
-    	                
-    	                $scope.submit = function () {
-    	                	
-    	                	
-    	                    $log.log('Submiting user info.');
-    	                    $log.log(projectlist);
-    	                    $modalInstance.dismiss('cancel');
-    	                };
-    	                $scope.cancel = function () {
-    	                    $modalInstance.dismiss('cancel');
-    	                };
-    	        	    $scope.addMovie = function () {
-    	                 	 var newRole = new function() {
-    	                          this.id  = $scope.id ;
-    	                          this.coordinators    = [$scope.co];
-    	                          this.name    = $scope.name;
-    	                          this.description    = $scope.des;};
+                      var modalInstance = $modal.open({
+                        templateUrl: 'myModalContent.html',
+                        controller: ModalInstanceCtrl,
+                        size: size,
+                        resolve: {
+                        	projectlist: function () {
+                            return $scope.projectlist;
+                          }
+                        }
+                      });
 
-    	                      alert("test :"+newRole.id);
-    	                      
+                      modalInstance.result.then(function (selectedItem) {
+                        $scope.selected = selectedItem;
+                      }, function () {
+                        $log.info('Modal dismissed at: ' + new Date());
+                      });
+                    };
+                  
 
-    	                      $scope.projectlist = $scope.projectlist.concat(newRole);
-    	                 	
-    	                   
-    	                 };
-    	       
-    	            },
-    	            resolve: {
-    	            	projectlist: function () {
-    	                    return $scope.projectlist;
-    	                }
-    	            }
-    	        });
-    	    };
-     
-     
-     
+                  // Please note that $modalInstance represents a modal window (instance) dependency.
+                  // It is not the same as the $modal service used above.
+
+                  var ModalInstanceCtrl = function ($scope, $modalInstance, projectlist) {
+                    $scope.projectlist = projectlist;
+                    $scope.newproject = {}
+                    $scope.ok = function () {
+                    	
+                    	var ids =projectlist.length + 1;
+                    	$scope.projectlist.push({name:$scope.newproject.name,coordinators:[$scope.newproject.coordinators],description:$scope.newproject.description,id:ids});
+                    	
+                      console.log($scope.newproject.name, "$scope.newproject.name");
+                      
+                      console.log($scope);
+                      $modalInstance.close($scope.newproject.name);
+                    };
+
+                    $scope.cancel = function () {
+                      $modalInstance.dismiss('cancel');
+                    };};
      
    
     
@@ -85,8 +79,8 @@ angular.module('myApp.controllers', [])
      
  
   }])
-  .controller('ProjectList', ['$scope', '$routeParams', 
-                              function($scope, $routeParams)  {
+  .controller('ProjectList', ['$scope', '$routeParams','ProjectsService' ,
+                              function($scope, $routeParams,ProjectsService)  {
     $scope.message = "Hello This message is from View 2";
     $scope.closedate = function ()
     {
@@ -98,39 +92,87 @@ angular.module('myApp.controllers', [])
     $scope.projectlist1 = [
                           {
                               "id": 1,
-                              "status_task":[{"description": "Productidentifier","status":"/img/complete.png","priority": "Showstopper","assign_to":"saurav","des":"sdsadcadsdsadsa","due_date":"20/5/2014",
-                                  "created_date":"20/5/2014"},{"description": "Productidentifier","status":"/img/pending.jpg","priority": "High","des":"vdjajdsajhsjssajcvshacvcbsajbcascbdsa","due_date":"20/5/2014",
+                              "status_task":[
+                               {"description": "Productidentifier",
+                            	  "status":"/img/complete.png",
+                            	  "priority": "Showstopper",
+                            	  "assign_to":"saurav",
+                            	  "des":"sdsadcadsdsadsa","due_date":"20/5/2014",
+                                  "created_date":"20/5/2014"},
+                                  {"description": "Productidentifier",
+                                	  "status":"/img/pending.jpg",
+                                	  "priority": "High",
+                                	  "des":"vdjajdsajhsjssajcvshacvcbsajbcascbdsa",
+                                	  "due_date":"20/5/2014",
                                       "created_date":"20/5/2014","assign_to":"saurav"}],
                              
-                              "coordinators":[{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"},{"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}],
+                              "coordinators":[{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"},
+                                              {"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}],
                              
                                
                           },
                           {
                               
                               "id": 2,
-                              "status_task":[{"description": "Nameoftheprject","status":"/img/pending.jpg", "due_date":"20/5/2014",
-                                  "created_date":"20/5/2014","priority": "Showstopper","des":"sdsadsadcnskcnsakcnsakcsaakc","assign_to":"saurav"},{"status":"/img/complete.png","priority": "Medium","des":"streteFBskncsakacnSJXSXdsadsa", "due_date":"20/5/2014",
-                                      "created_date":"20/5/2014","description": "Nameofthepject","assign_to":"kosick"}],
-                             "coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},{"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}] ,
+                              "status_task":[
+                                  {"description": "Nameoftheprject",
+                            	  "status":"/img/pending.jpg", 
+                            	  "due_date":"20/5/2014",
+                                  "created_date":"20/5/2014",
+                                  "priority": "Showstopper",
+                                  "des":"sdsadsadcnskcnsakcnsakcsaakc",
+                                  "assign_to":"saurav"},
+                                  
+                                  
+                                  {"status":"/img/complete.png",
+                                	  "priority": "Medium",
+                                	  "des":"streteFBskncsakacnSJXSXdsadsa", 
+                                	  "due_date":"20/5/2014",
+                                      "created_date":"20/5/2014",
+                                      "description": "Nameofthepject","assign_to":"kosick"}],
+                                       "coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},
+                                                      {"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}] ,
                             
                              
                           },
                           {
                               
                               "id": 3,
-                              "status_task":[{"description": "NameoftheHU","status":"/img/complete.png","priority": "Medium","assign_to":"priyanka","des":"sdsadsadckncksncskansaakcnsaaksdsadsa","due_date":"20/5/2014",
-                                  "created_date":"20/5/2014"},{"description": "NameoftheHU","status":"/img/pending.jpg","des":"vcsjbxsajbxjsabxjsxbxsjxsjxbsjbxsdsadsa","due_date":"20/5/2014",
-                                      "created_date":"20/5/2014","assign_to":"kosick","priority": "High"}],
+                              "status_task":[{"description": "NameoftheHU",
+                            	  "status":"/img/complete.png",
+                            	  "priority": "Medium",
+                            	  "assign_to":"priyanka",
+                            	  "des":"sdsadsadckncksncskansaakcnsaaksdsadsa",
+                            	  "due_date":"20/5/2014",
+                                  "created_date":"20/5/2014"},
+                                  {"description": "NameoftheHU",
+                                	  "status":"/img/pending.jpg",
+                                	  "des":"vcsjbxsajbxjsabxjsxbxsjxsjxbsjbxsdsadsa",
+                                	  "due_date":"20/5/2014",
+                                      "created_date":"20/5/2014",
+                                      "assign_to":"kosick",
+                                      "priority": "High"}],
                            	"coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"}],
                       
                           },
                           {
                               
                               "id": 4,
-                              "status_task":[{"description": "NameoftheAssng","status":"/img/pending.jpg","priority": "Showstopper","des":"sdsadncskcnskcsakcnascksacnsaksadsdsadsa","due_date":"20/5/2014",
-                                  "created_date":"20/5/2014","assign_to":"priyanka"},{"description": "NameofAssn","status":"/img/pending.jpg","des":"sajcbsajcbsajcbsajsajcbsaajcbsawesadsa","due_date":"20/5/2014",
-                                      "created_date":"20/5/2014","assign_to":"kosick","priority": "Medium"}],
+                              "status_task":[
+                                   {"description": "NameoftheAssng",
+                            	  "status":"/img/pending.jpg",
+                            	  "priority": "Showstopper",
+                            	  "des":"sdsadncskcnskcsakcnascksacnsaksadsdsadsa",
+                            	  "due_date":"20/5/2014",
+                                  "created_date":"20/5/2014",
+                                  "assign_to":"priyanka"},
+                                  {"description": "NameofAssn",
+                                	  "status":"/img/pending.jpg",
+                                	  "des":"sajcbsajcbsajcbsajsajcbsaajcbsawesadsa",
+                                	  "due_date":"20/5/2014",
+                                      "created_date":"20/5/2014",
+                                      "assign_to":"kosick",
+                                      "priority": "Medium"}],
                            	"coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"},{"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}],
                            	"due_date":"20/5/2014",
                             
@@ -147,50 +189,5 @@ angular.module('myApp.controllers', [])
     }
       
     }]);
-
-var ModalDemoCtrl = function ($scope, $modal, $log) {
-
-	  $scope.items = ['item1', 'item2', 'item3'];
-
-	  $scope.open = function (size) {
-
-	    var modalInstance = $modal.open({
-	      templateUrl: 'myModalContent.html',
-	      controller: ModalInstanceCtrl,
-	      size: size,
-	      resolve: {
-	        items: function () {
-	          return $scope.items;
-	        }
-	      }
-	    });
-
-	    modalInstance.result.then(function (selectedItem) {
-	      $scope.selected = selectedItem;
-	    }, function () {
-	      $log.info('Modal dismissed at: ' + new Date());
-	    });
-	  };
-	};
-
-	// Please note that $modalInstance represents a modal window (instance) dependency.
-	// It is not the same as the $modal service used above.
-
-	var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
-
-	  $scope.items = items;
-	  $scope.selected = {
-	    item: $scope.items[0]
-	  };
-
-	  $scope.ok = function () {
-	    $modalInstance.close($scope.selected.item);
-	  };
-
-	  $scope.cancel = function () {
-	    $modalInstance.dismiss('cancel');
-	  };
-	};
-
 
 

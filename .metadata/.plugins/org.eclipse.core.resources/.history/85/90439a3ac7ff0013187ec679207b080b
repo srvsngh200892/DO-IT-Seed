@@ -1,0 +1,130 @@
+'use strict';
+
+/* Controllers */
+
+angular.module('myApp.controllers', [])
+  .controller('ProjectDetails', ['$scope','ProjectsService', function($scope, ProjectsService) {
+     $scope.projectlist = ProjectsService.list();
+     
+    
+
+    	    $scope.open = function () {
+
+    	        $modal.open({
+    	            templateUrl: 'myModalContent.html',
+    	            backdrop: true,
+    	            windowClass: 'modal',
+    	            controller: function ($scope, $modalInstance, $log, projectlist) {
+    	                $scope.projectlist = projectlist;
+    	                
+    	                $scope.submit = function () {
+    	                	
+    	                	
+    	                    $log.log('Submiting user info.');
+    	                    $log.log(projectlist);
+    	                    $modalInstance.dismiss('cancel');
+    	                };
+    	                $scope.cancel = function () {
+    	                    $modalInstance.dismiss('cancel');
+    	                };
+    	        	    $scope.addMovie = function () {
+    	                 	 var newRole = new function() {
+    	                          this.id  = $scope.id ;
+    	                          this.coordinators    = [$scope.co];
+    	                          this.name    = $scope.name;
+    	                          this.description    = $scope.des;};
+
+    	                      alert("test :"+newRole.id);
+    	                      
+
+    	                      $scope.projectlist = $scope.projectlist.concat(newRole);
+    	                 	
+    	                   
+    	                 };
+    	       
+    	            },
+    	            resolve: {
+    	            	projectlist: function () {
+    	                    return $scope.projectlist;
+    	                }
+    	            }
+    	        });
+    	    };
+     
+     
+     
+     
+   
+    
+       
+     
+ 
+  }])
+  .controller('ProjectList', ['$scope', '$routeParams','ProjectsService' ,
+                              function($scope, $routeParams,ProjectsService)  {
+    $scope.message = "Hello This message is from View 2";
+    $scope.closedate = function ()
+    {
+        $scope.date = new Date();
+    };
+    	
+    	
+    
+   
+    for(var i = 0; i <  $scope.projectlist1.length; i++) {
+        if($routeParams.id ==  $scope.projectlist1[i].id)
+        	{
+        $scope.projectdetails= $scope.projectlist1[i];
+        
+        
+        	}
+    }
+      
+    }]);
+
+var ModalDemoCtrl = function ($scope, $modal, $log) {
+
+	  $scope.items = ['item1', 'item2', 'item3'];
+
+	  $scope.open = function (size) {
+
+	    var modalInstance = $modal.open({
+	      templateUrl: 'myModalContent.html',
+	      controller: ModalInstanceCtrl,
+	      size: size,
+	      resolve: {
+	        items: function () {
+	          return $scope.items;
+	        }
+	      }
+	    });
+
+	    modalInstance.result.then(function (selectedItem) {
+	      $scope.selected = selectedItem;
+	    }, function () {
+	      $log.info('Modal dismissed at: ' + new Date());
+	    });
+	  };
+	};
+
+	// Please note that $modalInstance represents a modal window (instance) dependency.
+	// It is not the same as the $modal service used above.
+
+	var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+
+	  $scope.items = items;
+	  $scope.selected = {
+	    item: $scope.items[0]
+	  };
+
+	  $scope.ok = function () {
+	    $modalInstance.close($scope.selected.item);
+	  };
+
+	  $scope.cancel = function () {
+	    $modalInstance.dismiss('cancel');
+	  };
+	};
+
+
+

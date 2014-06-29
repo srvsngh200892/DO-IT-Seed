@@ -1,0 +1,27 @@
+'use strict';
+
+/* Services */
+
+
+// Demonstrate how to register services
+// In this case it is a simple value service.
+var module = angular.module('myApp.services', []);
+
+module.service('ProjectsService', function() {
+	var projects = [ {
+		"id" : 1,
+		"name" : "DO-IT again",
+		"description" : "Dummy Description",
+		"coordinators" : [ "Rahul", "Nagarjun" ],
+	}, {
+		"id" : 2,
+		"name" : "DONOT OPEN THIS ",
+		"description" : "qwerty IS HR",
+		"coordinators" : [ "ram", "karthik" ],
+	} ];
+
+	// simply returns the contacts list
+	this.list = function() {
+		return projects;
+	};
+});
