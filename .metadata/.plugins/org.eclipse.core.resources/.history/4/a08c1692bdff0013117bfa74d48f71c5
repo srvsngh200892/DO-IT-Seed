@@ -1,0 +1,112 @@
+ 
+
+<div class="container-fulid borders">
+<div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="">Add Collaborators</a></li>
+          <li><a href="">Create Task</a></li>
+          
+        </ul>
+      </div>
+<div class="row">
+  
+    <div class="col-md-12 ">
+    <div class="col-md-4 ">
+    <h3><span style="color:#000;font-weight:bold">Collaborators</span>
+    </h3></div>
+    <div class="col-md-5 ">
+    <h3 class="liketext"><span style="color:#000;font-weight:bold;">Fliters</span></h3>
+<div class="btn-group gap">
+
+  <button class="btn btn-primary " ng-click="myFilter = {priority: 'Showstopper'}">Showstopper</button>
+    <button class="btn btn-primary " ng-click="myFilter = {priority: 'High'}">High</button>
+    <button class="btn btn-primary " ng-click="myFilter = {priority: 'Medium'}">Medium</button>
+</div>
+</div>
+<div class="col-md-3 ">
+<h3><span style="color:#000;font-weight:bold">More...</span></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container-fulid borders">
+
+
+  <div class="row">
+  
+    <div class="col-md-12 ">
+    
+    <div class="col-md-4 ">
+    
+    <div class="col-md-4 ">
+    <span ng-repeat="coordinator in projectdetails.coordinators ">
+      <br><br>
+      <h1><span><img ng-src="{{coordinator.img_url}}"></span></h1>
+      </span>
+      
+    </div>
+    <div class="col-md-4 ">
+    <span ng-repeat="coordinator in projectdetails.coordinators">
+					
+					<br>
+					<h1><span>{{coordinator .name}}</span></h1>
+					<h3><span>{{coordinator .role}}</span></h3>
+					
+				</span>
+      
+    </div>
+      
+    </div>
+    
+   
+    
+    <div class="col-md-5">
+      <div class="col-md-2 ">,
+      <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter ">
+      <br><br><br>
+      <h1><span><img ng-src="{{coordinator.status}}"></span></h1>
+      </span>
+    </div>
+    
+    <div class="col-md-10 ">
+    <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter ">
+					<br>
+					
+					<h1><span>{{coordinator.description}}</span></h1>
+					<h3><span>{{coordinator .des}}</span></h3><br>
+					
+				</span>
+      
+    </div>
+
+    </div>
+    <div class="col-md-3">
+    
+    <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter">
+    
+    <div class="btn-group gap">
+
+  <button class="btn btn-primary " >Edit</button>
+    <button class="btn btn-primary " >Close</button>
+    <button class="btn btn-primary " >Complete</button>
+</div>
+    
+   <h3> <span>Created Date:{{coordinator.created_date}}</span></h3>
+   <h3> <span>Due Date:{{coordinator.due_date}}</span></h3>
+    <h3><span>Assign To:{{coordinator.assign_to}}</span></h3>
+     
+    
+    </span>
+   
+    </div>
+      
+ 
+    </div>
+    
+     
+  </div>
+</div>

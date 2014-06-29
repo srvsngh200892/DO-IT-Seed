@@ -1,0 +1,7 @@
+.borders{border:1px solid black;}
+.shift{margin-left:30%;}
+h3.liketext { color:#F00; display:inline;
+ 
+ 
+ }
+ .gap{margin-top:10px;}

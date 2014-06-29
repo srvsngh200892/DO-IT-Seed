@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('ProjectDetails', ['$scope', function($scope) {
+  .controller('ProjectDetails', ['$scope','$modal', '$log', function($scope, $modal, $log) {
      $scope.projectlist = [
                            {
                                "id": 1,
@@ -31,12 +31,69 @@ angular.module('myApp.controllers', [])
                            }
                        ];
      
+    
+
+    	    $scope.open = function () {
+
+    	        $modal.open({
+    	            templateUrl: 'myModalContent.html',
+    	            backdrop: true,
+    	            windowClass: 'modal',
+    	            controller: function ($scope, $modalInstance, $log, projectlist) {
+    	                $scope.projectlist = projectlist;
+    	                
+    	                $scope.submit = function () {
+    	                	
+    	                	
+    	                    $log.log('Submiting user info.');
+    	                    $log.log(projectlist);
+    	                    $modalInstance.dismiss('cancel');
+    	                };
+    	                $scope.cancel = function () {
+    	                    $modalInstance.dismiss('cancel');
+    	                };
+    	        	    $scope.addMovie = function () {
+    	                 	 var newRole = new function() {
+    	                          this.id  = $scope.id ;
+    	                          this.coordinators    = [$scope.co];
+    	                          this.name    = $scope.name;
+    	                          this.description    = $scope.des;};
+
+    	                      alert("test :"+newRole.id);
+    	                      
+
+    	                      $scope.projectlist = $scope.projectlist.concat(newRole);
+    	                 	
+    	                   
+    	                 };
+    	       
+    	            },
+    	            resolve: {
+    	            	projectlist: function () {
+    	                    return $scope.projectlist;
+    	                }
+    	            }
+    	        });
+    	    };
      
      
+     
+     
+   
+    
+       
+     
+ 
   }])
   .controller('ProjectList', ['$scope', '$routeParams', 
                               function($scope, $routeParams)  {
     $scope.message = "Hello This message is from View 2";
+    $scope.closedate = function ()
+    {
+        $scope.date = new Date();
+    };
+    	
+    	
     
     $scope.projectlist1 = [
                           {
@@ -66,7 +123,7 @@ angular.module('myApp.controllers', [])
                                   "created_date":"20/5/2014"},{"description": "NameoftheHU","status":"/img/pending.jpg","des":"vcsjbxsajbxjsabxjsxbxsjxsjxbsjbxsdsadsa","due_date":"20/5/2014",
                                       "created_date":"20/5/2014","assign_to":"kosick","priority": "High"}],
                            	"coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"}],
-                           	
+                      
                           },
                           {
                               
@@ -134,4 +191,6 @@ var ModalDemoCtrl = function ($scope, $modal, $log) {
 	    $modalInstance.dismiss('cancel');
 	  };
 	};
+
+
 
