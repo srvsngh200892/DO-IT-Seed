@@ -1,0 +1,296 @@
+'use strict';
+
+/* Controllers */
+
+angular.module('myApp.controllers', [])
+  .controller('ProjectDetails', ['$scope','$modal', '$log', function($scope,$modal, $log) {
+     $scope.projectlist = [ {
+         "id": 1,
+         "description": "Productidentifier",
+         "name": "Assignment",
+         "coordinators":['saurav','priyanka']
+     },
+     {
+         "description": "Nameofthepject",
+         "id": 2,
+         "name": "Assignment1",
+        "coordinators":['saurav','kousick']   
+     },
+     {
+         "description": "NameoftheHu",
+         "id": 3,
+         "name": "Assignment2",
+      	"coordinators":["kousick","priyanka"]
+     },
+     {
+         "description": "NameoftheAssng",
+         "id": 4,
+         "name": "Assignment3",
+      	"coordinators":['saurav','priyanka','kousick',]
+     }];
+     
+  
+
+                    $scope.open = function (size) {
+
+                      var modalInstance = $modal.open({
+                        templateUrl: 'myModalContent.html',
+                        controller: ModalInstanceCtrl,
+                        size: size,
+                        resolve: {
+                        	projectlist: function () {
+                            return $scope.projectlist;
+                          }
+                        }
+                      });
+
+                      modalInstance.result.then(function (selectedItem) {
+                        $scope.selected = selectedItem;
+                      }, function () {
+                        $log.info('Modal dismissed at: ' + new Date());
+                      });
+                    };
+                  
+
+                  // Please note that $modalInstance represents a modal window (instance) dependency.
+                  // It is not the same as the $modal service used above.
+
+                  var ModalInstanceCtrl = function ($scope, $modalInstance, projectlist) {
+                    $scope.projectlist = projectlist;
+                    $scope.newproject = {};
+                    $scope.ok = function () {
+                    	
+                    	var ids =projectlist.length + 1;
+                    	$scope.projectlist.push({name:$scope.newproject.name,coordinators:[$scope.newproject.coordinators],description:$scope.newproject.description,id:ids});
+                    	
+                      console.log($scope.newproject.name, "$scope.newproject.name");
+                      
+                      console.log($scope);
+                      $modalInstance.close($scope.newproject.name);
+                    };
+
+                    $scope.cancel = function () {
+                      $modalInstance.dismiss('cancel');
+                    };};
+     
+   
+    
+       
+     
+ 
+  }])
+  .controller('ProjectList', ['$scope', '$routeParams','$modal', '$log',
+                              function($scope, $routeParams,$modal, $log)  {
+    $scope.message = "Hello This message is from View 2";
+    $scope.closedate = function ()
+    {
+        $scope.date = new Date();
+    };
+    	
+    	
+    
+    $scope.projectlist1 = [
+                          {
+                              "id": 1,
+                              "status_task":[
+                               {"description": "Productidentifier",
+                            	  "status":"/img/complete.png",
+                            	  "priority": "Showstopper",
+                            	  "assign_to":"saurav",
+                            	  "des":"sdsadcadsdsadsa","due_date":"20/5/2014",
+                                  "created_date":"20/5/2014"},
+                                  {"description": "Productidentifier",
+                                	  "status":"/img/pending.jpg",
+                                	  "priority": "High",
+                                	  "des":"vdjajdsajhsjssajcvshacvcbsajbcascbdsa",
+                                	  "due_date":"20/5/2014",
+                                      "created_date":"20/5/2014","assign_to":"saurav"}],
+                             
+                              "coordinators":[{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"},
+                                              {"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}],
+                             
+                               
+                          },
+                          {
+                              
+                              "id": 2,
+                              "status_task":[
+                                  {"description": "Nameoftheprject",
+                            	  "status":"/img/pending.jpg", 
+                            	  "due_date":"20/5/2014",
+                                  "created_date":"20/5/2014",
+                                  "priority": "Showstopper",
+                                  "des":"sdsadsadcnskcnsakcnsakcsaakc",
+                                  "assign_to":"saurav"},
+                                  
+                                  
+                                  {"status":"/img/complete.png",
+                                	  "priority": "Medium",
+                                	  "des":"streteFBskncsakacnSJXSXdsadsa", 
+                                	  "due_date":"20/5/2014",
+                                      "created_date":"20/5/2014",
+                                      "description": "Nameofthepject","assign_to":"kosick"}],
+                                       "coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},
+                                                      {"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}] ,
+                            
+                             
+                          },
+                          {
+                              
+                              "id": 3,
+                              "status_task":[{"description": "NameoftheHU",
+                            	  "status":"/img/complete.png",
+                            	  "priority": "Medium",
+                            	  "assign_to":"priyanka",
+                            	  "des":"sdsadsadckncksncskansaakcnsaaksdsadsa",
+                            	  "due_date":"20/5/2014",
+                                  "created_date":"20/5/2014"},
+                                  {"description": "NameoftheHU",
+                                	  "status":"/img/pending.jpg",
+                                	  "des":"vcsjbxsajbxjsabxjsxbxsjxsjxbsjbxsdsadsa",
+                                	  "due_date":"20/5/2014",
+                                      "created_date":"20/5/2014",
+                                      "assign_to":"kosick",
+                                      "priority": "High"}],
+                           	"coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"}],
+                      
+                          },
+                          {
+                              
+                              "id": 4,
+                              "status_task":[
+                                   {"description": "NameoftheAssng",
+                            	  "status":"/img/pending.jpg",
+                            	  "priority": "Showstopper",
+                            	  "des":"sdsadncskcnskcsakcnascksacnsaksadsdsadsa",
+                            	  "due_date":"20/5/2014",
+                                  "created_date":"20/5/2014",
+                                  "assign_to":"priyanka"},
+                                  {"description": "NameofAssn",
+                                	  "status":"/img/pending.jpg",
+                                	  "des":"sajcbsajcbsajcbsajsajcbsaajcbsawesadsa",
+                                	  "due_date":"20/5/2014",
+                                      "created_date":"20/5/2014",
+                                      "assign_to":"kosick",
+                                      "priority": "Medium"}],
+                           	"coordinators":[{"name":"kousick","role":"Developer","img_url":"/img/boy.jpg"},{"name":"priyanka","role":"Developer","img_url":"/img/priyanka.jpg"},{"name":"saurav","role":"Developer","img_url":"/img/boy.jpg"}],
+                           	"due_date":"20/5/2014",
+                            
+                          
+                          }
+                      ];
+    
+    
+ 
+
+    
+    for(var i = 0; i <  $scope.projectlist1.length; i++) {
+        if($routeParams.id ==  $scope.projectlist1[i].id)
+        	{
+        $scope.projectdetails= $scope.projectlist1[i];
+        
+        $scope.open = function (size) {
+
+            var modalInstance = $modal.open({
+              templateUrl: 'myModal.html',
+              controller: ModalInstanceCtrl,
+              size: size,
+              resolve: {
+            	  projectdetails: function () {
+                  return $scope.projectdetails;
+                }
+              }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+              $scope.selected = selectedItem;
+            }, function () {
+              $log.info('Modal dismissed at: ' + new Date());
+            });
+          };
+        
+
+        // Please note that $modalInstance represents a modal window (instance) dependency.
+        // It is not the same as the $modal service used above.
+
+        var ModalInstanceCtrl = function ($scope, $modalInstance, projectdetails) {
+          $scope.projectdetails = projectdetails;
+          $scope.n = {};
+          $scope.ok = function () {
+          	
+          
+          	$scope.projectdetails.coordinators.push({name:$scope.n.name,role:$scope.n.role});
+          	
+            console.log($scope.n.name, "$scope.n.name");
+            
+            console.log($scope);
+            $modalInstance.close($scope.n.name);
+          };
+
+          $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+          };};
+        
+          
+          $scope.show = function (size) {
+
+              var modalInstance = $modal.open({
+                templateUrl: 'myModalContent.html',
+                controller: ModalInstanceCtrl,
+                size: size,
+                resolve: {
+                	projectdetails1: function () {
+                    return $scope.projectdetails;
+                  }
+                }
+              });
+
+              modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+              }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+              });
+            };
+          
+
+          // Please note that $modalInstance represents a modal window (instance) dependency.
+          // It is not the same as the $modal service used above.
+
+          var ModalInstanceCtrl = function ($scope, $modalInstance, projectdetails) {
+            $scope.projectdetails1 = projectdetails;
+            $scope.newp = {};
+            $scope.save = function () {
+            	
+            
+            	$scope.projectdetails.status_task.push({{"description": "NameoftheHU",
+              	  "status":"/img/pending.jpg",
+            	  "des":"vcsjbxsajbxjsabxjsxbxsjxsjxbsjbxsdsadsa",
+            	  "due_date":"20/5/2014",
+                  "created_date":"20/5/2014",
+                  "assign_to":"kosick",
+                  "priority": "High"});
+            	
+              console.log($scope.newp.name, "$scope.newp.name");
+              
+              console.log($scope);
+              $modalInstance.close($scope.newp.name);
+            };
+
+            $scope.cancel = function () {
+              $modalInstance.dismiss('cancel');
+            };};
+        
+        
+        
+        	}
+    }
+
+
+
+
+
+    
+      
+    }]);
+
+
