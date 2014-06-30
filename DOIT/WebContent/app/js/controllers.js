@@ -79,8 +79,8 @@ angular.module('myApp.controllers', [])
      
  
   }])
-  .controller('ProjectList', ['$scope', '$routeParams','ProjectsService' ,
-                              function($scope, $routeParams,ProjectsService)  {
+  .controller('ProjectList', ['$scope', '$routeParams','$modal', '$log',
+                              function($scope, $routeParams,$modal, $log)  {
     $scope.message = "Hello This message is from View 2";
     $scope.closedate = function ()
     {
@@ -179,6 +179,51 @@ angular.module('myApp.controllers', [])
                           
                           }
                       ];
+    
+    
+    $scope.open = function (size) {
+
+        var modalInstance = $modal.open({
+          templateUrl: 'myModalContent.html',
+          controller: ModalInstanceCtrl,
+          size: size,
+          resolve: {
+          	projectlist1: function () {
+              return $scope.projectlist1;
+            }
+          }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+      };
+    
+
+    // Please note that $modalInstance represents a modal window (instance) dependency.
+    // It is not the same as the $modal service used above.
+
+    var ModalInstanceCtrl = function ($scope, $modalInstance, projectlist1) {
+      $scope.projectlist1 = projectlist1;
+      $scope.newproject = {}
+      $scope.ok = function () {
+      	
+      	
+        console.log($scope.newproject.name, "$scope.newproject.name");
+        
+        console.log($scope);
+        $modalInstance.close($scope.newproject.name);
+      };
+
+      $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+      };};
+
+    
+    
+    
     for(var i = 0; i <  $scope.projectlist1.length; i++) {
         if($routeParams.id ==  $scope.projectlist1[i].id)
         	{

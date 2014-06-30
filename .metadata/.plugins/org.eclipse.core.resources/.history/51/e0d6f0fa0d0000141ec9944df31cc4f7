@@ -1,0 +1,142 @@
+ 
+
+<div class="container-fulid borders">
+<div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><button class="btn btn-default" ng-click="open()">Add Collaborators!</button></li>
+          <li><a href="">Create Task</a></li>
+          
+        </ul>
+      </div>
+<div class="row">
+	
+  
+    <div class="col-md-12 ">
+    <div class="col-md-4 ">
+    <h3><span style="color:#000;font-weight:bold">Collaborators</span>
+    </h3></div>
+    <div class="col-md-5 ">
+    <div class="col-md-2 ">
+    <h3 ><span style="color:#000;font-weight:bold;">Fliters</span></h3></div>
+    <div class="col-md-10 ">
+<div class="btn-group gap">
+
+  <button class="btn btn-primary " ng-click="myFilter = {priority: 'Showstopper'}">Showstopper</button>
+    <button class="btn btn-primary " ng-click="myFilter = {priority: 'High'}">High</button>
+    <button class="btn btn-primary " ng-click="myFilter = {priority: 'Medium'}">Medium</button>
+</div>
+</div>
+</div>
+<div class="col-md-3 ">
+<h4><span style="color:#000;font-weight:bold">Due Date:<input type="date" ></span></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container-fulid borders">
+
+
+  <div class="row">
+  <div ng-controller="ProjectList">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add Collaborators!</h3>
+        </div>
+        <div class="modal-body">
+        <label class="col-md-12">Add Collaborators*</label>
+			<div class="col-md-9" id="name">
+				<input type="text" class="form-control" id="name"
+					placeholder="Add Collaborators" required="required" ng-model="newproject.name" />
+			</div>
+
+	
+        <div class="modal-footer">
+           
+        </div>
+</div>
+    </script>
+
+   
+    
+</div>
+					
+				</div>
+			</div>
+			<div>
+  
+    <div class="col-md-12 ">
+    
+    <div class="col-md-4 ">
+    
+    <div class="col-md-4 ">
+    <span ng-repeat="coordinator in projectdetails.coordinators ">
+      <br><br>
+      <h1><span><img ng-src="{{coordinator.img_url}}"></span></h1>
+      </span>
+      
+    </div>
+    <div class="col-md-4 ">
+    <span ng-repeat="coordinator in projectdetails.coordinators">
+					
+					<br>
+					<h1><span>{{coordinator .name}}</span></h1>
+					<h3><span>{{coordinator .role}}</span></h3>
+					
+				</span>
+      
+    </div>
+      
+    </div>
+    
+   
+    
+    <div class="col-md-5">
+      <div class="col-md-2 ">,
+      <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter ">
+      <br><br><br>
+      <h1><span><img ng-src="{{coordinator.status}}"></span></h1>
+      </span>
+    </div>
+    
+    <div class="col-md-10 ">
+    <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter ">
+					<br>
+					
+					<h1><span>{{coordinator.description}}</span></h1>
+					<h3><span>{{coordinator .des}}</span></h3><br>
+					
+				</span>
+      
+    </div>
+
+    </div>
+    <div class="col-md-3">
+    
+    <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter">
+    
+    <div class="btn-group gap">
+
+  <button class="btn btn-primary " >Edit</button>
+    <button class="btn btn-primary " >Close</button>
+    <button class="btn btn-primary " >Complete</button>
+</div>
+    
+   <h3> <span>Created Date:{{coordinator.created_date}}</span></h3>
+   <h3> <span>Due Date:{{coordinator.due_date}}</span></h3>
+    <h3><span>Assign To:{{coordinator.assign_to}}</span></h3>
+     
+    
+    </span>
+   
+    </div>
+      
+ 
+    </div>
+    
+     
+  </div>
+</div>

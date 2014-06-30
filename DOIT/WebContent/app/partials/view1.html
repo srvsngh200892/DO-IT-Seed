@@ -5,7 +5,8 @@
           <li class="active"><a href="#">Home</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><button class="btn btn-default" ng-click="open()">Create Project!</button></li>
+          <li><button class="btn btn-primary" ng-click="open()">Create Project!</button></li>
+         
          
         </ul>
       </div>
@@ -24,7 +25,7 @@
     <div ng-controller="ProjectDetails">
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
-            <h3 class="modal-title">I'm a modal!</h3>
+            <h3 class="modal-title">Create New Project!</h3>
         </div>
         <div class="modal-body">
         <label class="col-md-12"> Project Name*</label>
@@ -44,11 +45,13 @@
 				<input type="text" class="form-control" name="contact"
 					placeholder=" collaborators" ng-model="newproject.coordinators"/>
 			</div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
+ <button class="btn btn-primary" ng-click="ok()">OK</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
+        <div class="modal-footer">
+           
+        </div>
+</div>
     </script>
 
    
