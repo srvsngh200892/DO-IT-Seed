@@ -32,7 +32,7 @@
 </div>
 </div>
 <div class="col-md-3 ">
-<h4><span style="color:#000;font-weight:bold">Due Date:<input type="date" ></span></h4>
+<h4><span style="color:#000;font-weight:bold">Due Date:<input type="date" ng-model="myDate"></span></h4>
 </div>
 </div>
 </div>
@@ -132,16 +132,16 @@
     <div class="col-md-4 ">
     
     <div class="col-md-4 ">
-    <span ng-repeat="coordinator in projectdetails.coordinators ">
-      <br><br>
+    <span ng-repeat="coordinator in projectdetails.assigned_to ">
+      <br><br><br>
       <h1><span><img ng-src="{{coordinator.img_url}}"></span></h1>
       </span>
       
     </div>
     <div class="col-md-4 ">
-    <span ng-repeat="coordinator in projectdetails.coordinators">
+    <span ng-repeat="coordinator in projectdetails.assigned_to">
 					
-					<br>
+					<br><br>
 					<h1><span>{{coordinator .name}}</span></h1>
 					<h3><span>{{coordinator .role}}</span></h3>
 					
@@ -155,15 +155,15 @@
     
     <div class="col-md-5">
       <div class="col-md-2 ">,
-      <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter ">
-      <br><br><br>
+      <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter | filter:{duedate:myDate}" ">
+      <br><br><br><br>
       <h1><span><img ng-src="{{coordinator.status}}"></span></h1>
       </span>
     </div>
     
     <div class="col-md-10 ">
-    <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter ">
-					<br>
+    <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter | filter:{duedate:myDate}" ">
+					<br><br>
 					
 					<h1><span>{{coordinator.description}}</span></h1>
 					<h3><span>{{coordinator .des}}</span></h3><br>
@@ -175,7 +175,7 @@
     </div>
     <div class="col-md-3">
     
-    <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter">
+    <span ng-repeat="coordinator in projectdetails.status_task | filter:myFilter | filter:{duedate:myDate}"">
     
     <div class="btn-group gap">
 
