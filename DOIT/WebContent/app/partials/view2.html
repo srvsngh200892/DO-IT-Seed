@@ -7,7 +7,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><button class="btn btn-primary" ng-click="open()">Add Collaborators!</button></li>
-           <li><button class="btn btn-primary" >Add Task!</button></li>
+           <li><button class="btn btn-primary" ng-click="show()">Add Task!</button></li>
           
         </ul>
       </div>
@@ -47,12 +47,59 @@
             <h3 class="modal-title">Add Collaborators!</h3>
         </div>
         <div class="modal-body">
-        <label class="col-md-12">Add Collaborators*</label>
+        <label class="col-md-12">Name*</label>
 			<div class="col-md-9" id="name">
 				<input type="text" class="form-control" id="name"
-					placeholder="Add Collaborators" required="required" ng-model="newproject.name" />
+					placeholder="Add Collaborators" required="required" ng-model="newp.name" />
+			</div>
+<label class="col-md-12">Role*</label>
+			<div class="col-md-9" id="name">
+				<input type="text" class="form-control" id="name"
+					placeholder="Add Collaborators role" required="required" ng-model="newp.role" />
 			</div>
 <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	
+        <div class="modal-footer">
+           
+        </div>
+</div>
+    </script>
+
+   
+    
+</div>
+					
+				</div>
+			</div>
+			<div>
+			<div ng-controller="ProjectList">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add Collaborators!</h3>
+        </div>
+        <div class="modal-body">
+        <label class="col-md-12"> Task Name*</label>
+			<div class="col-md-9" id="name">
+				<input type="text" class="form-control" id="name"
+					placeholder="Task Name" required="required" ng-model="newp.name" />
+			</div>
+<label class="col-md-12">Priority*</label>
+			<div class="col-md-9" id="name">
+<input type="text" class="form-control" id="name"
+					placeholder="Priority" required="required" ng-model="newp.name" />
+			</div>
+<label class="col-md-12">Description*</label>
+			<div class="col-md-9" id="name">
+				<input type="text" class="form-control" id="name"
+					placeholder="Add Collaborators role" required="required" ng-model="newp.role" />
+			</div>
+<label class="col-md-12"> Date*</label>
+			<div class="col-md-9" id="name">
+				<input type="date" class="form-control" id="name"
+					placeholder="Start Date" required="required" ng-model="newp.name" />
+			</div>
+<button class="btn btn-primary" ng-click="save()">OK</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 	
         <div class="modal-footer">

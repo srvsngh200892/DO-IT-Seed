@@ -57,7 +57,7 @@ angular.module('myApp.controllers', [])
 
                   var ModalInstanceCtrl = function ($scope, $modalInstance, projectlist) {
                     $scope.projectlist = projectlist;
-                    $scope.newproject = {}
+                    $scope.newproject = {};
                     $scope.ok = function () {
                     	
                     	var ids =projectlist.length + 1;
@@ -181,14 +181,15 @@ angular.module('myApp.controllers', [])
                       ];
     
     
-    $scope.open = function (size) {
+ 
+    $scope.show = function (size) {
 
         var modalInstance = $modal.open({
           templateUrl: 'myModalContent.html',
           controller: ModalInstanceCtrl,
           size: size,
           resolve: {
-          	projectlist1: function () {
+        	  projectlist1: function () {
               return $scope.projectlist1;
             }
           }
@@ -207,21 +208,63 @@ angular.module('myApp.controllers', [])
 
     var ModalInstanceCtrl = function ($scope, $modalInstance, projectlist1) {
       $scope.projectlist1 = projectlist1;
-      $scope.newproject = {}
+      $scope.newp = {};
       $scope.ok = function () {
       	
+      
+      	$scope.projectlist1.push({coordinators:[{name:$scope.newp.name,role:$scope.newp.role}]});
       	
-        console.log($scope.newproject.name, "$scope.newproject.name");
+        console.log($scope.newp.name, "$scope.newp.name");
         
         console.log($scope);
-        $modalInstance.close($scope.newproject.name);
+        $modalInstance.close($scope.newp.name);
       };
 
       $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
       };};
-
     
+      $scope.open = function (size) {
+
+          var modalInstance = $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: ModalInstanceCtrl,
+            size: size,
+            resolve: {
+          	  projectlist1: function () {
+                return $scope.projectlist1;
+              }
+            }
+          });
+
+          modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+        };
+      
+
+      // Please note that $modalInstance represents a modal window (instance) dependency.
+      // It is not the same as the $modal service used above.
+
+      var ModalInstanceCtrl = function ($scope, $modalInstance, projectlist1) {
+        $scope.projectlist1 = projectlist1;
+        $scope.newp = {};
+        $scope.save = function () {
+        	
+        
+        	$scope.projectlist1.push({coordinators:[{name:$scope.newp.name,role:$scope.newp.role}]});
+        	
+          console.log($scope.newp.name, "$scope.newp.name");
+          
+          console.log($scope);
+          $modalInstance.close($scope.newp.name);
+        };
+
+        $scope.cancel = function () {
+          $modalInstance.dismiss('cancel');
+        };};
     
     
     for(var i = 0; i <  $scope.projectlist1.length; i++) {
@@ -232,6 +275,12 @@ angular.module('myApp.controllers', [])
         
         	}
     }
+
+
+
+
+
+    
       
     }]);
 
